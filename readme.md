@@ -1,9 +1,4 @@
-> Invite-only community and social collaboration platform for programmers, startupers, JavaScript professionals and pirates. 
-
-
-## Live Demo
-
-<http://hackhall.com>
+> Resource Allocator for usTwo 
 
 ## Setup
 
