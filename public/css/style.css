@@ -3,11 +3,11 @@ body {
 	padding-bottom: 10px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light","Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 300;
-/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+	/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
 
 a {
-/*  color: #00B7FF;*/
+	/*  color: #00B7FF;*/
 }
 div#users-box div.item {
 	padding-bottom:1.5em;
@@ -16,8 +16,86 @@ div#users-box div.item {
 }
 div#users-box div.item img {
 	margin-bottom:0.5em;
-/*	width:100px;*/
+	/*	width:100px;*/
 }
 div#users-box div.item .user-name {
 	margin-bottom:0.5em;
+}
+
+.img-polaroid {
+	padding: 0px;
+	background-color: none;
+	border: none;
+	box-shadow: none;
+	-webkit-transform: scale(1.09);
+	height:150px;
+}
+
+.allocation{
+	margin:1px;
+	padding:10px;
+	border:1px solid #EEE;
+	display: inline-block;
+	border-radius:0%;
+	cursor:pointer;
+	position: relative;
+}
+
+.project-item{
+	padding:20px;
+	border:1px solid #ddd;
+	float:left;
+	margin:10px;
+}
+
+.allocation.dragged{
+	border:1px solid green;
+	color:green;
+}
+
+.allocation__toolbar{
+	display: none;
+
+}
+
+.allocation.dragged .allocation__toolbar{
+	display: block;
+	position: absolute;
+	right:-20px;
+	width:15px;
+	height:30px;
+	top:0;
+}
+
+.allocation-drop{
+	padding:10px;
+	border:1px solid #ccc;
+	margin-top:15px;
+}
+
+.navbar-inner{
+	background-color:none;
+	background-image:none;
+	border-radius:0px;
+	box-shadow:none;
+}
+
+[class^="role-"]{
+	border:20px solid white;
+	display: inline-block;
+	border-radius:100%;
+	overflow: hidden;
+}
+
+.role--admin{
+	border-color:black;
+}
+.role--ux{
+	border-color:red;
+}
+.role--design{
+	border-color:orange;
+}
+.role--developer{
+	border-color:green;
 }

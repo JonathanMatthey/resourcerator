@@ -1,21 +1,21 @@
 define([
-	'libs/text!tpl/postAdd.html', 
-], function (postAddTpl){
-	return addPostView = Backbone.View.extend({
+	'libs/text!tpl/projectAdd.html', 
+], function (projectAddTpl){
+	return addProjectView = Backbone.View.extend({
 		el: "#content",
 
 		events: {
-			'click #add-post-btn': 'addPost'
+			'click #add-project-btn': 'addProject'
 		},
 		initialize: function () {
 
-			this.template = postAddTpl;
+			this.template = projectAddTpl;
 		},		
 		render: function() {
 			this.$el.html(_.template(this.template));
 		},
-		addPost: function() {
-			this.model= new PostModel();
+		addProject: function() {
+			this.model= new ProjectModel();
 			// console.log(JSON.stringify($('form').serializeArray()));
 			console.log($('form').toObject());			
 			var formAdd = $('form').toObject();
@@ -26,7 +26,7 @@ define([
 				xhrFields:creds,
 				success: function() {
 					console.log("added!");
-					app.navigate('#posts', true);
+					app.navigate('#projects', true);
 				},
 				error : function (model, response) {
 					app.alertsView.error(response);

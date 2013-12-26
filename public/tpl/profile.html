@@ -5,7 +5,7 @@
 		<p><img src="<%= (attr.photoUrl) ? attr.photoUrl : '/img/user.png' %>" class="img-polaroid" /></p>
 		<h2><%= attr.displayName %></h2>	
 		<p>Role:
-		<% var roles = 'user staff mentor investor founder'.split(' ');
+		<% var roles = 'admin design ux developer'.split(' ');
 		if (profile.admin) { %>
 			<select class="input-small roles">
 				<% _.each(roles, function(value,key,list){ %>

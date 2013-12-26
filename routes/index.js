@@ -1,4 +1,5 @@
 exports.posts = require('./posts');
+exports.projects = require('./projects');
 exports.main = require('./main');
 exports.users = require('./users');
 exports.application = require('./application');

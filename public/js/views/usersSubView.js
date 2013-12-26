@@ -30,7 +30,7 @@ define ([
 			console.log('promote'+this.model.id);
 			this.model.attributes.admin = true;
 			this.model.save({},{
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function(model, response) {
 					app.alertsView.success("Promoted!");
 				},
@@ -43,7 +43,7 @@ define ([
 			console.log('demote'+this.model.id);			
 			this.model.attributes.admin = false;
 			this.model.save({},{
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function(model, response) {
 					app.alertsView.success("Demoted!");
 				},
@@ -71,7 +71,7 @@ define ([
 			this.model.attributes.approved = true;
 			// this.model.attributes.watch = true;
 			this.model.save({},{
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function(model, response) {
 					app.alertsView.success("Approved!");						
 				},
@@ -84,7 +84,7 @@ define ([
 			console.log('ban'+this.model.id)
 			this.model.attributes.banned = true;
 			this.model.save({},{
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function(model, response) {
 					app.alertsView.success("Banned!");
 				},

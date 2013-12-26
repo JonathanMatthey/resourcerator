@@ -17,7 +17,7 @@ define([
 			this.model.attributes.role = obj.currentTarget.value;
 			// this.model.attributes.watch = true;
 			this.model.save({},{
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function(model, response) {
 					app.alertsView.success("Changed!");						
 					$('.roles').show();

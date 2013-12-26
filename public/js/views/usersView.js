@@ -13,7 +13,7 @@ define([
 		},
 		load: function() {
 			this.collection.fetch({
-				xhrFeilds:creds, 
+				xhrFields:creds, 
 				success: function() {
 				},
 				error: function (xhr, status, error){

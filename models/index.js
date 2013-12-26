@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var roles = 'user staff mentor investor founder'.split(' ');
+var roles = 'admin designer ux developer'.split(' ');
 
 exports.Post = new Schema ({
   title: {
@@ -70,6 +70,90 @@ exports.Post = new Schema ({
   action: String  
 });
 
+
+exports.Project = new Schema ({
+  title: {
+    required: true,
+    type: String,
+    trim: true,
+    // match: /^([[:alpha:][:space:][:punct:]]{1,100})$/
+    match: /^([\w ,.!?]{1,100})$/
+  },
+  url: {
+    type: String,
+    trim: true,
+    max: 1000
+  },
+  text: {
+    type: String,
+    trim: true,
+    max: 2000
+  },
+  comments: [{
+    text: {
+      type: String,
+      trim: true,
+      max:2000
+    },
+    author: {
+      id: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'User' 
+      },
+      name: String
+    }
+  }],
+  allocations: [{
+    user: {
+      id: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      }
+    },
+    capacity: Number,
+    timeLeft: Number
+  }],
+  watches: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'User' 
+  }],
+  likes: [{
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  }],
+  author: {
+    id: { 
+      type: Schema.Types.ObjectId, 
+      ref: 'User',
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  created: { 
+    type: Date, 
+    default: Date.now,
+    required: true
+  },
+  updated:  { 
+    type: Date, 
+    default: Date.now, 
+    required: true
+  },  
+  own: Boolean,
+  like: Boolean,
+  watch: Boolean,
+  admin: Boolean,
+  action: String  
+});
+
 exports.User = new Schema({
   angelListId: String,
   angelListProfile: Schema.Types.Mixed,
@@ -89,8 +173,8 @@ exports.User = new Schema({
     required: true,
     trim: true
   },
-    password: String,
-    email: {
+  password: String,
+  email: {
     type: String,
     required: true,
     trim: true

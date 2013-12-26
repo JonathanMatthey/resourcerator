@@ -62,14 +62,15 @@ var mongoose = require('mongoose');
 var connection = mongoose.createConnection(dbUrl);
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.once('open', function () {
-  console.info('connected to database')
+  console.info('connected to database');
 });
 
 var models = require('./models');
 function db (req, res, next) {
   req.db = {
     User: connection.model('User', models.User, 'users'),
-    Post: connection.model('Post', models.Post, 'posts')
+    Post: connection.model('Post', models.Post, 'posts'),
+    Project: connection.model('Project', models.Project, 'project')
   };
   return next();
 }
@@ -97,6 +98,13 @@ app.get('/api/posts/:id', checkUser, db, routes.posts.getPost);
 app.put('/api/posts/:id', checkUser, db, routes.posts.updatePost);
 app.del('/api/posts/:id', checkUser, db, routes.posts.del);
 
+//PROJECTS
+app.get('/api/projects', checkUser, db, routes.projects.getProjects);
+app.post('/api/projects', checkUser, db, routes.projects.add);
+app.get('/api/projects/:id', checkUser, db, routes.projects.getProject);
+app.put('/api/projects/:id', checkUser, db, routes.projects.updateProject);
+app.del('/api/projects/:id', checkUser, db, routes.projects.del);
+
 //USERS
 app.get('/api/users', checkUser, db, routes.users.getUsers);
 app.get('/api/users/:id', checkUser, db,routes.users.getUser);
@@ -116,7 +124,7 @@ app.get('*', function(req, res){
 http.createServer(app);
 if (require.main === module) {
   app.listen(app.get('port'), function(){
-    console.info('Express server listening on port ' + app.get('port'));
+    console.info('Express server listening on port ' + app.get('port'));    
   });
 }
 else {

@@ -75,7 +75,7 @@ define([
 				this.model.attributes.watch = true;
 				this.model.save({			
 				},{
-					xhrFeilds:creds, 
+					xhrFields:creds, 
 					success: function(model) {	
 						app.alertsView.success("You're watching the post now!");						
 						model.trigger('change');
@@ -97,7 +97,7 @@ define([
 				this.model.attributes.like = true;
 				this.model.save({			
 				},{
-					xhrFeilds:creds, 
+					xhrFields:creds, 
 					success: function(model) {
 						app.alertsView.success("You like the post now!");	
 						model.trigger('change');

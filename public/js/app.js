@@ -42,11 +42,16 @@ require([
 	'js/views/postsSubView',
 	'js/views/postView',
 	'js/views/postAddView',
+	'js/views/projectsView',
+	'js/views/projectsSubView',
+	'js/views/projectView',
+	'js/views/projectAddView',
 	'js/views/usersView',
 	'js/views/userView',
 	'js/views/applicationView',
 	
-	'js/models/post-model'
+	'js/models/post-model',
+	'js/models/project-model'
 ], 
 	function (
 		homeTpl, 
@@ -63,11 +68,16 @@ require([
 		PostsSubView,
 		PostView,
 		PostAddView,
+		ProjectsView,
+		ProjectsSubView,
+		ProjectView,
+		ProjectAddView,
 		UsersView,
 		UserView,
 		ApplicationView,
 		
-		PostModel
+		PostModel,
+		ProjectModel
 		
 	) {
 	var ApplicationRouter = Backbone.Router.extend({
@@ -82,6 +92,10 @@ require([
 			"posts/new": "addPost",
 			"posts/?skip=:skip": "posts",
 			"posts/:id": "viewPost",
+			"projects": "projects",
+			"projects/new": "addProject",
+			"projects/?skip=:skip": "projects",
+			"projects/:id": "viewProject",
 			"people": "people",
 			"people/:id": "viewUser",
 			"thankyou": "thankyou",
@@ -99,10 +113,13 @@ require([
 			this.loginView = new LoginView();
 			this.profileView = new ProfileView();
 			this.postsView = new PostsView();
+			this.projectsView = new ProjectsView();
 			this.postView = new PostView();
+			this.projectView = new ProjectView();
 			this.usersView = new UsersView();
 			this.userView = new UserView();
 			this.postAddView = new PostAddView();	
+			this.projectAddView = new ProjectAddView();	
 			this.applicationView = new ApplicationView();		
 			this.bind('all', this.menu, this);
 		},
@@ -134,6 +151,16 @@ require([
 		},
 		viewPost: function(id){
 			this.postView.load(id);
+		},
+		projects: function(skip){
+			var s = skip || 0;
+			this.projectsView.load(s);
+		},
+		addProject: function (){
+			this.projectAddView.render();
+		},
+		viewProject: function(id){
+			this.projectView.load(id);
 		},
 		people: function() {
 			this.usersView.load();
@@ -225,7 +252,7 @@ require([
 					console.log (data)
 					if (data.msg=="Authorized") {
 						app.headerView.model.trigger('login');
-						app.navigate('#posts', true);
+						app.navigate('#projects', true);
 					}
 
 				},

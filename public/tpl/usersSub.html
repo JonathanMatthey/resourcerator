@@ -21,7 +21,7 @@
 
 	-->
 	<div>
-	<a href="/#people/<%= model.attributes._id %>" title="<%= model.attributes.displayName %>" >
+	<a class="role--<%= model.attributes.role %>" href="/#people/<%= model.attributes._id %>" title="<%= model.attributes.displayName %>" >
 			<img src="<%= (model.attributes.photoUrl) ? model.attributes.photoUrl : '/img/user.png' %>" class="img-polaroid" />
 	</a>
 	</div>
